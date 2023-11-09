@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Movies</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Available Movies</h1>
+            </div>
+            <div class="col-md-6">
+                <form class="form-inline float-right" action="/search" method="get">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Search Movies">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-3 mb-4">
+            <div class="col-md-6">
+                <a href="/" class="btn btn-secondary">Home</a>
+            </div>
+            <div class="col-md-6">
+                <a href="/watched" class="btn btn-primary float-right">My Watched Movies</a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            {% for movie in available_movies %}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                    <img src="{{ movie.poster_url }}" class="card-img-top" alt="{{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">
+                            Rating: {{ movie.rating }} | Genre: {{ movie.genre }} | Runtime: {{ movie.runtime }} minutes
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post" action="/add_to_watched">
+                            <input type="hidden" name="movie" value="{{ movie.title }}">
+                            <button class="btn btn-primary" type="submit">Add to Watched</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

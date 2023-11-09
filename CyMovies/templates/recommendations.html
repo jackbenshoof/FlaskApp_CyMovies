@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4">Movie Recommendations</h1>
+        <form method="post" action="/recommend" class="mt-4">
+            <div class="mb-3">
+                <label for="genre" class="form-label">Preferred Genre:</label>
+                <input type="text" name="genre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="min_rating" class="form-label">Minimum IMDb Rating:</label>
+                <input type="number" name="min_rating" step="0.1" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="release_year" class="form-label">Preferred Release Year:</label>
+                <input type="number" name="release_year" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Recommend Movies</button>
+        </form>
+    </div>
+</body>
+</html>
